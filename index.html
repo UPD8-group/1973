@@ -3,237 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="1973 is an independent agency. It makes small, useful things on the open web — directories, tools, chatbots, books, music.">
+  <meta name="description" content="Studio 1973 is a one-person studio near Canberra, Australia — interactive websites, AI assistants, and full platforms, with a camera never far away.">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="1973">
-  <meta property="og:description" content="An independent agency making small, useful things on the open web.">
+  <meta property="og:title" content="Studio 1973">
+  <meta property="og:description" content="Born the same year as the personal computer. Still making things by hand.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://1973.ai">
-  <title>1973 — An Independent Agency</title>
+  <meta name="theme-color" content="#171008">
+  <title>Studio 1973 — websites, AI assistants, platforms</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- Netlify Forms detection -->
+</head>
+<body>
+  <!-- Netlify Forms detection — mirrors the CRT contact form fields -->
   <form name="contact" netlify netlify-honeypot="bot-field" hidden>
     <input name="name">
     <input name="email">
-    <select name="about"></select>
     <textarea name="message"></textarea>
   </form>
-</head>
-<body>
-
-  <!-- ============================================================
-       MASTHEAD
-       ============================================================ -->
-  <header class="masthead">
-    <div class="masthead-inner">
-      <div class="masthead-numeral-wrap">
-        <!-- SVG noise filter for grain shimmer -->
-        <svg class="grain-svg" aria-hidden="true" focusable="false">
-          <defs>
-            <filter id="grain" x="0%" y="0%" width="100%" height="100%">
-              <feTurbulence
-                type="fractalNoise"
-                baseFrequency="0.65"
-                numOctaves="3"
-                stitchTiles="stitch"
-                result="noise"
-              />
-              <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise"/>
-              <feBlend in="SourceGraphic" in2="grayNoise" mode="overlay" result="blended"/>
-              <feComposite in="blended" in2="SourceGraphic" operator="in"/>
-            </filter>
-          </defs>
-        </svg>
-        <h1 class="masthead-numeral" aria-label="1973">1973</h1>
-        <div class="masthead-grain-overlay" aria-hidden="true"></div>
-      </div>
-      <p class="masthead-sub">AN INDEPENDENT AGENCY · EST. 1973</p>
-    </div>
-  </header>
-
-  <main>
-
-    <!-- ============================================================
-         MANIFESTO / COLOPHON
-         ============================================================ -->
-    <section class="section manifesto" aria-labelledby="manifesto-heading">
-      <h2 id="manifesto-heading" class="section-label">
-        <span class="pilcrow" aria-hidden="true">¶</span> Colophon
-      </h2>
-      <div class="prose">
-        <p>1973 is an independent agency. It makes small, useful things on the open web — directories, tools, chatbots, books, music — built quickly and shipped without ceremony.</p>
-        <p>The name is a year, not a brand strategy. It marks a sensibility: late enough to be raised on the internet, early enough to remember when it wasn't there. The team works from across the world, with senior hands on every project. That tension is the work.</p>
-        <p>Most of what 1973 makes is built for itself — products, tools, experiments released to the open web. Some work is for clients, by invitation. The line between the two isn't always clean, and that suits us.</p>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         THE WORK
-         ============================================================ -->
-    <section class="section work" aria-labelledby="work-heading">
-      <h2 id="work-heading" class="section-label">
-        <span class="pilcrow" aria-hidden="true">¶</span> The Work
-      </h2>
-
-      <div class="work-grid" role="list">
-
-        <!-- ── PROJECT CARD TEMPLATE ──────────────────────────────
-             Copy this block and fill in your project details.
-             Use <a> instead of <div> when the project has a live URL.
-             Status options: "live" | "beta" | "concept" | "dormant"
-             Domain: use the URL string or "—" if not yet live.
-
-        <article class="card" role="listitem">
-          <div class="card-inner">
-            <h3 class="card-name">Project Name</h3>
-            <p class="card-desc">One-line description of what it does.</p>
-            <div class="card-status">
-              <span class="status-dot status-live" aria-hidden="true"></span>
-              <span class="status-word">Live</span>
-              <span class="status-domain">example.com</span>
-            </div>
-          </div>
-        </article>
-
-        ── END TEMPLATE ─────────────────────────────────────────── -->
-
-        <!-- Trudy -->
-        <article class="card" role="listitem">
-          <a class="card-inner card-link" href="https://trudy.org" target="_blank" rel="noopener noreferrer" aria-label="Trudy — visit trudy.org">
-            <h3 class="card-name">Trudy</h3>
-            <p class="card-desc">An AI chatbot small businesses embed in one line of code. $1 a day.</p>
-            <div class="card-status">
-              <span class="status-dot status-beta" aria-hidden="true"></span>
-              <span class="status-word">Beta</span>
-              <span class="status-domain">trudy.org</span>
-            </div>
-          </a>
-        </article>
-
-        <!-- Relief Radar -->
-        <article class="card" role="listitem">
-          <a class="card-inner card-link" href="https://holyshit.app" target="_blank" rel="noopener noreferrer" aria-label="Relief Radar — visit holyshit.app">
-            <h3 class="card-name">Relief Radar</h3>
-            <p class="card-desc">Public toilets, mapped across Australia. Free, no account, no drama.</p>
-            <div class="card-status">
-              <span class="status-dot status-live" aria-hidden="true"></span>
-              <span class="status-word">Live</span>
-              <span class="status-domain">holyshit.app</span>
-            </div>
-          </a>
-        </article>
-
-        <!-- Santa's Secret -->
-        <article class="card" role="listitem">
-          <a class="card-inner card-link" href="https://santasecret.com.au" target="_blank" rel="noopener noreferrer" aria-label="Santa's Secret — visit santasecret.com.au">
-            <h3 class="card-name">Santa's Secret</h3>
-            <p class="card-desc">A Christmas shop in Bungendore. Bespoke decorations, handcrafted gifts.</p>
-            <div class="card-status">
-              <span class="status-dot status-live" aria-hidden="true"></span>
-              <span class="status-word">Live</span>
-              <span class="status-domain">santasecret.com.au</span>
-            </div>
-          </a>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- ============================================================
-         CONTACT
-         ============================================================ -->
-    <section class="section contact" aria-labelledby="contact-heading">
-      <h2 id="contact-heading" class="section-label">
-        <span class="pilcrow" aria-hidden="true">¶</span> Get in Touch
-      </h2>
-
-      <p class="contact-direct">Or write directly: <a href="mailto:j@1973.ai" class="contact-email">j@1973.ai</a></p>
-
-      <form
-        name="contact"
-        method="POST"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-        class="contact-form"
-        novalidate
-      >
-        <!-- Honeypot — hidden from real users, bots fill it -->
-        <p class="honeypot-field" aria-hidden="true">
-          <label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
-        </p>
-
-        <div class="form-group">
-          <label class="form-label" for="name">Name</label>
-          <input
-            class="form-input"
-            type="text"
-            id="name"
-            name="name"
-            required
-            autocomplete="name"
-            placeholder="Your name"
-          >
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="email">Email</label>
-          <input
-            class="form-input"
-            type="email"
-            id="email"
-            name="email"
-            required
-            autocomplete="email"
-            placeholder="you@example.com"
-          >
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="about">What's this about</label>
-          <div class="select-wrap">
-            <select class="form-input form-select" id="about" name="about" required>
-              <option value="" disabled selected>Select one…</option>
-              <option value="A project">A project</option>
-              <option value="A conversation">A conversation</option>
-              <option value="Something else">Something else</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="message">Message</label>
-          <textarea
-            class="form-input form-textarea"
-            id="message"
-            name="message"
-            required
-            placeholder="What's on your mind?"
-            rows="5"
-          ></textarea>
-        </div>
-
-        <div class="form-group form-submit-group">
-          <button type="submit" class="form-submit">Send →</button>
-        </div>
-
-      </form>
-    </section>
-
-  </main>
-
-  <!-- ============================================================
-       FOOTER
-       ============================================================ -->
-  <footer class="site-footer">
-    <p class="footer-line">Built with Claude · Deployed on Netlify · No tracking, no cookies</p>
-    <p class="footer-line">Website made in 1973</p>
-  </footer>
-
-  <script src="script.js"></script>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>

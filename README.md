@@ -1,62 +1,85 @@
-# 1973
+# Studio 1973 — 1973.ai
 
-An independent agency. Small, useful things on the open web.
+The studio site. A single-theme dark "darkroom" world: giant striped 1973 mark,
+self-demonstrating case-study cards, a Claude-powered front desk, a darkroom that
+develops prints on hover, and a 1973 wood-grain CRT television for a contact form.
+
+The spec lives in `upd8-group/hear.is` under `studio-1973/` — `BRIEF.md` is the
+brief, `concept-mockup.html` is the approved visual concept this build ports.
 
 ## Stack
 
-Vanilla HTML, CSS, and JavaScript. No framework, no build step. One page.
+Vite + React on Netlify, matching hear.is.
 
-- **Fonts**: Fraunces (serif) + JetBrains Mono, loaded from Google Fonts
-- **Forms**: Netlify Forms (no backend required)
-- **Deploy**: Netlify, auto-deploy from `main`
+- **Build**: `npm run build` → `dist/`
+- **Front-desk chat**: Netlify Function (`netlify/functions/front-desk.js`) calling
+  the Claude API via `@anthropic-ai/sdk`. The client falls back to scripted answers
+  if the function is unreachable.
+- **Contact form**: Netlify Forms, posted from the CRT screen (channel 3).
+- **Fonts**: system stacks only (Iowan Old Style / Palatino / Georgia + ui-monospace) —
+  no external requests, strict CSP.
+
+## Development
+
+```
+npm install
+npm run dev          # site only — chat falls back to scripted answers
+netlify dev          # site + functions, if you have the Netlify CLI
+```
 
 ## Deploy
 
-Push to `main`. Netlify picks it up automatically and deploys to `https://1973.ai`.
+Push to `main`. Netlify builds and deploys to https://1973.ai.
 
-That's it. No build command, no `npm install`.
+**Required environment variable** (Netlify dashboard → Site configuration →
+Environment variables):
 
-## Adding a project to the grid
+- `ANTHROPIC_API_KEY` — server-side only, used by the front-desk function.
+  Without it the function returns an error and the chat quietly falls back to
+  its scripted answers, so the site never breaks.
 
-Open `index.html` and find the `<!-- ── PROJECT CARD TEMPLATE ──` comment inside `.work-grid`. Copy the template block and fill in your details:
+**Contact form notifications**: Netlify dashboard → Forms → contact →
+Form notifications → email to the studio inbox. Confirm the hello@1973.ai
+mailbox exists before relying on it.
 
-```html
-<article class="card" role="listitem">
-  <a class="card-inner card-link" href="https://yourproject.com" target="_blank" rel="noopener noreferrer" aria-label="Project Name — visit yourproject.com">
-    <h3 class="card-name">Project Name</h3>
-    <p class="card-desc">One-line description of what it does.</p>
-    <div class="card-status">
-      <span class="status-dot status-live" aria-hidden="true"></span>
-      <span class="status-word">Live</span>
-      <span class="status-domain">yourproject.com</span>
-    </div>
-  </a>
-</article>
-```
+## The design rule that matters most
 
-**Status options** (change both the dot class and the word):
+Every case-study card demonstrates its own product:
 
-| Status   | Dot class        | Colour     |
-|----------|-----------------|------------|
-| Live     | `status-live`    | Vermillion |
-| Beta     | `status-beta`    | Amber      |
-| Concept  | `status-concept` | Muted grey |
-| Dormant  | `status-dormant` | Ink at 30% |
+- **hear.is** — pointer-reactive waveform (`Waveform.jsx`)
+- **Listing Lens** — slow amber scan-beam (CSS, `.case.lens::after`)
+- **Santa's Secret** — real falling snow (`SnowCanvas.jsx`, IntersectionObserver-gated)
 
-If the project has no URL yet, use a `<div class="card-inner">` instead of `<a>` and set the domain to `—`.
+Any future case study must ship with its own self-demonstrating interaction.
+All motion respects `prefers-reduced-motion`.
 
-## Contact form
-
-Form submissions go to Netlify Forms automatically. Set up email notifications in the Netlify dashboard under **Forms → contact → Form notifications**, pointing to `j@1973.ai`.
-
-## Files
+## Layout
 
 ```
-index.html     — single page
-styles.css     — all styles
-script.js      — minimal form validation (site works without JS)
-favicon.svg    — "73" in accent colour
-netlify.toml   — headers, CSP, SPA redirect fallback
-robots.txt     — open to all crawlers
-README.md      — this file
+index.html                     Vite entry + hidden Netlify Forms detection form
+src/
+  main.jsx                     entry
+  App.jsx                      section order
+  styles.css                   the whole design system (ported from the concept)
+  lib/util.js                  seeded PRNG + reduced-motion hook
+  components/
+    Header.jsx  Hero.jsx  FactsStrip.jsx
+    Work.jsx  Waveform.jsx  SnowCanvas.jsx
+    Assistant.jsx              front-desk chat (Claude + scripted fallback)
+    Darkroom.jsx               generated placeholder frames — swap for real photos
+    Badge.jsx                  "made in 1973" badge + embed snippet
+    ContactTV.jsx              the Chroma 73 television (channels, knobs, form)
+    Footer.jsx
+netlify/functions/front-desk.js   Claude-powered chat endpoint
+public/                        favicon, robots.txt
+netlify.toml                   build, functions, headers/CSP
 ```
+
+## Roadmap (from the brief)
+
+1. ~~Scaffold repo + deploy pipeline; port the mockup into components~~ ✅
+2. ~~Wire the front-desk chat to Claude~~ ✅ (set `ANTHROPIC_API_KEY`)
+3. ~~Wire the CRT contact form~~ ✅ via Netlify Forms (confirm hello@1973.ai)
+4. Replace darkroom placeholders with real photography
+5. Ship the badge embed from 1973.ai; add the badge to hear.is + santasecret
+6. Later: saygday.ai and Listing Lens sites / case-study pages as they mature
