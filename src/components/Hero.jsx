@@ -9,7 +9,7 @@ export default function Hero() {
       </p>
       <p className="lede">
         In 1973 Xerox switched on the Alto, Ethernet carried its first packet, and Motorola made
-        the first handheld phone call. <strong>Studio 1973</strong> is a one-person studio from
+        the first handheld phone call. <strong>Studio 1973</strong> is an independent studio from
         the same vintage — building interactive websites, AI assistants, and full platforms,
         with a camera never far away.
       </p>

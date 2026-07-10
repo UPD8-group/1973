@@ -97,7 +97,7 @@ export default function ContactTV() {
   return (
     <section className="block wrap" id="contact">
       <div className="block-head">
-        <span className="eyebrow">05 · Contact</span>
+        <span className="eyebrow">06 · Contact</span>
         <h2>Tune in to get in touch</h2>
         <p>
           The contact form is a 1973 television set. Turn the channel knob until you find

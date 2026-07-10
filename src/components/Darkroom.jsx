@@ -61,7 +61,7 @@ export default function Darkroom() {
         <h2>The darkroom</h2>
         <p>
           Photography is the studio&rsquo;s oldest habit — older than the web. Prints develop when you
-          hold the light on them. (Placeholder frames below; prints from the archive are on their way.)
+          hold the light on them.
         </p>
       </div>
       <div className="darkroom">

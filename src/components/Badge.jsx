@@ -22,7 +22,7 @@ export default function Badge() {
   return (
     <section className="block wrap" id="badge">
       <div className="block-head">
-        <span className="eyebrow">04 · The signature</span>
+        <span className="eyebrow">05 · The signature</span>
         <h2>Everything ships with the mark</h2>
         <p>
           Every site and platform the studio builds carries one small line in its footer —

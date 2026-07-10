@@ -67,6 +67,7 @@ src/
     Work.jsx  Waveform.jsx  SnowCanvas.jsx
     Assistant.jsx              front-desk chat (Claude + scripted fallback)
     Darkroom.jsx               generated placeholder frames — swap for real photos
+    Studio.jsx                 about-the-studio section
     Badge.jsx                  "made in 1973" badge + embed snippet
     ContactTV.jsx              the Chroma 73 television (channels, knobs, form)
     Footer.jsx

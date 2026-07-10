@@ -17,8 +17,8 @@ const SCRIPTED = [
   { keys: ["santa", "bungendore", "client", "snow", "kim", "shop", "store", "christmas"], text: "The studio's latest client build is Santa's Secret — Kim's bricks-and-mortar Christmas shop in Bungendore, NSW, half an hour from Canberra. Handcrafted ornaments, custom trees, 'an unconventional Christmas' — so the site got a custom hand-coded snow engine (look for the snowy card in the work section) and an AI assistant on saygday.ai. Live at santasecret.com.au." },
   { keys: ["gday", "g'day", "saygday", "platform"], text: "saygday.ai is the studio's own chatbot platform — friendly AI assistants for real businesses, built with an Australian accent. Its first shop floor is Santa's Secret in Bungendore, and there's more coming. Watch this space." },
   { keys: ["listing", "lens", "car", "vehicle"], text: "Listing Lens (listinglens.app) is a studio platform in the workshop: screenshot any online vehicle listing and it builds a full report — recalls, known faults, owner experiences, the genuine positives — then arms you with the questions to ask the seller before any money moves." },
-  { keys: ["build", "make", "do", "services", "can you"], text: "Interactive websites, AI assistants like me, and full platforms — front end, serverless back end, database, the lot. Plus photography, which sneaks into everything. One person, whole stack." },
-  { keys: ["hear", "sound", "acoustic", "map"], text: "hear.is is an acoustic accessibility map — you record 15 seconds of a place and it describes what it sounds like, for blind, low-vision and sensory-sensitive visitors. The raw audio never leaves your phone; Claude writes the description from abstract descriptors only." },
+  { keys: ["build", "make", "do", "services", "can you"], text: "Interactive websites, AI assistants like me, and full platforms — designed, built, and shipped under one roof. Plus photography, which sneaks into everything." },
+  { keys: ["hear", "sound", "acoustic", "map"], text: "hear.is is an acoustic accessibility map — you record 15 seconds of a place and it describes what it sounds like, for blind, low-vision and sensory-sensitive visitors. The raw audio never leaves your phone; the description is written from abstract descriptors only." },
   { keys: ["1973", "why", "name", "year"], text: "1973 is the founder's birth year — and the year the Xerox Alto, Ethernet, and the first mobile phone call all arrived. A good vintage for someone who builds on the web, hence Studio 1973. Every project ships with a 'made in 1973' mark in its footer." },
   { keys: ["photo", "camera", "picture"], text: "Photography is the studio's oldest habit. Scroll to the darkroom section — hold your pointer on a frame and it develops, just like a print under the enlarger." },
   { keys: ["contact", "hire", "email", "price", "cost", "work with"], text: "Scroll down to the television set and tune it to channel 3 — the contact form is broadcasting there. Or write directly to hello@1973.ai. Small studio, short queue, honest answers." },
@@ -157,10 +157,6 @@ export default function Assistant() {
           <button type="submit" disabled={busy}>Send</button>
         </form>
       </div>
-      <p className="chat-note">
-        Runs on the Claude API through a serverless function — the same pattern that powers hear.is.
-        No account, no tracking; the conversation lives in your browser tab.
-      </p>
     </section>
   );
 }

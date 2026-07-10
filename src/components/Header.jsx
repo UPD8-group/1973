@@ -6,6 +6,7 @@ export default function Header() {
         <a href="#work">work</a>
         <a href="#assistant">assistant</a>
         <a href="#photo">photo</a>
+        <a href="#studio">the studio</a>
         <a href="#badge">the badge</a>
         <a href="#contact">contact</a>
       </nav>

@@ -304,8 +304,6 @@ section.block { padding: 84px 0 0; }
   padding: 0 20px;
   cursor: pointer;
 }
-.chat-note { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); margin-top: 12px; max-width: 640px; }
-
 /* ---------- photography ---------- */
 .darkroom {
   display: grid;

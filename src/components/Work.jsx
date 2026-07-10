@@ -25,16 +25,14 @@ export default function Work() {
           </p>
           <p>
             The microphone audio never leaves the phone — analysis happens on-device, and only
-            abstract descriptors reach the server, where Claude writes a human description of
-            the room&rsquo;s sound.
+            abstract descriptors travel onward, where they become a plain-language description
+            of the room&rsquo;s sound.
           </p>
           <div className="chips">
-            <span className="chip">React + Vite PWA</span>
-            <span className="chip">Web Audio API</span>
-            <span className="chip">Claude API</span>
-            <span className="chip">Supabase</span>
-            <span className="chip">Netlify Functions</span>
-            <span className="chip">Google Places</span>
+            <span className="chip">15-second captures</span>
+            <span className="chip">On-device sound analysis</span>
+            <span className="chip">Privacy first</span>
+            <span className="chip">Works on any phone</span>
           </div>
         </div>
         <aside>
