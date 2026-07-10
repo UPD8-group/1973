@@ -269,6 +269,19 @@ section.block { padding: 84px 0 0; }
 .msg.bot { background: var(--ground-3); border: 1px solid var(--line); align-self: flex-start; border-radius: 2px 14px 14px 14px; white-space: pre-wrap; }
 .msg.you { background: var(--amber); color: var(--ground); align-self: flex-end; border-radius: 14px 2px 14px 14px; }
 .msg.typing { color: var(--ink-faint); font-family: var(--mono); font-size: 13px; }
+.msg-cta {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--amber);
+  text-decoration: none;
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+}
+.msg-cta:hover { color: var(--straw); }
 .chat-suggest { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 16px 14px; }
 .chat-suggest button {
   font-family: var(--mono);
