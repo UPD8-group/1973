@@ -34,7 +34,7 @@ export default function Studio() {
             <dt>Base</dt><dd>Near Canberra, Australia</dd>
             <dt>Vintage</dt><dd>1973 — a good year for launches</dd>
             <dt>Range</dt><dd>Design, build, ship — everything</dd>
-            <dt>Write</dt><dd><a href="mailto:hello@1973.ai">hello@1973.ai</a></dd>
+            <dt>Write</dt><dd><a href="#contact">Channel 3, on the television below</a></dd>
           </dl>
         </aside>
       </article>

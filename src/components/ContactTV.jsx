@@ -10,6 +10,7 @@ export default function ContactTV() {
   const [knobRot, setKnobRot] = useState(0);
   const [sendState, setSendState] = useState("idle"); // idle | sending | ok | error
   const [sentName, setSentName] = useState("");
+  const draft = useRef({ name: "", email: "", message: "" }); // survives a failed transmit
   const staticRef = useRef(null);
   const tuneTimer = useRef(null);
   const reduced = usePrefersReducedMotion();
@@ -74,12 +75,12 @@ export default function ContactTV() {
     if (form.elements["bot-field"].value) return; // honeypot
     setSendState("sending");
     setSentName(form.elements.name.value.trim() || "friend");
-    const data = new URLSearchParams({
-      "form-name": "contact",
+    draft.current = {
       name: form.elements.name.value,
       email: form.elements.email.value,
       message: form.elements.message.value,
-    });
+    };
+    const data = new URLSearchParams({ "form-name": "contact", ...draft.current });
     try {
       const res = await fetch("/", {
         method: "POST",
@@ -135,17 +136,19 @@ export default function ContactTV() {
                   <div className="crt-done">
                     <div className="big-ok">▮ SIGNAL RECEIVED</div>
                     <div className="sub">
-                      Thanks, {sentName}. The studio will write back — or reach it directly
-                      at hello@1973.ai
+                      Thanks, {sentName}. Your message is with the studio — it will write back soon.
                     </div>
                   </div>
                 ) : sendState === "error" ? (
                   <div className="crt-done err">
                     <div className="big-ok">▮ TRANSMISSION FAILED</div>
                     <div className="sub">
-                      The signal didn&rsquo;t get through. Write directly to hello@1973.ai —
-                      or turn the power off and on and try again.
+                      The signal didn&rsquo;t get through — atmospheric interference, most likely.
+                      Your message is saved; give it another go.
                     </div>
+                    <button type="button" onClick={() => setSendState("idle")}>
+                      TRY AGAIN ▶
+                    </button>
                   </div>
                 ) : (
                   <>
@@ -158,11 +161,11 @@ export default function ContactTV() {
                         </label>
                       </p>
                       <label htmlFor="crtName">► NAME</label>
-                      <input id="crtName" name="name" type="text" autoComplete="name" required />
+                      <input id="crtName" name="name" type="text" autoComplete="name" defaultValue={draft.current.name} required />
                       <label htmlFor="crtEmail">► EMAIL</label>
-                      <input id="crtEmail" name="email" type="email" autoComplete="email" required />
+                      <input id="crtEmail" name="email" type="email" autoComplete="email" defaultValue={draft.current.email} required />
                       <label htmlFor="crtMsg">► MESSAGE</label>
-                      <textarea id="crtMsg" name="message" rows={2} required />
+                      <textarea id="crtMsg" name="message" rows={2} defaultValue={draft.current.message} required />
                       <button type="submit" disabled={sendState === "sending"}>
                         {sendState === "sending" ? "TRANSMITTING…" : "TRANSMIT ▶"}
                       </button>
