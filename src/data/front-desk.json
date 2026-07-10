@@ -1,7 +1,7 @@
 {
   "greeting": "Hi — I'm the front desk at Studio 1973. Ask me what the studio makes, what things cost, where we are, or why it's called 1973.",
   "fallback": {
-    "a": "Great question — that one deserves a proper answer from the team rather than a canned one from me. Tune the television below to channel 3 and send it through, or write to hello@1973.ai.",
+    "a": "Great question — that one deserves a proper answer from the team rather than a canned one from me. Tune the television below to channel 3 and send it through; the studio reads everything.",
     "cta": { "href": "#contact", "label": "Take me to the television ↓" }
   },
   "entries": [
@@ -93,7 +93,7 @@
     {
       "id": "contact",
       "keys": ["contact", "hire", "email", "reach", "touch", "talk", "call", "phone", "speak", "meet", "meeting", "available", "availability", "enquire", "inquiry", "enquiry"],
-      "a": "Scroll down to the television set and tune it to channel 3 — the contact form is broadcasting there. Or write directly to hello@1973.ai. Small studio, short queue, honest answers.",
+      "a": "Scroll down to the television set and tune it to channel 3 — the contact form is broadcasting there, straight to the studio. Small studio, short queue, honest answers.",
       "cta": { "href": "#contact", "label": "Take me to the television ↓" }
     },
     {

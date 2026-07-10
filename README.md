@@ -56,9 +56,9 @@ npm run dev
 Push to `main`. Netlify builds and deploys to https://1973.ai. No environment
 variables required.
 
-**Contact form notifications**: Netlify dashboard → Forms → contact →
-Form notifications → email to the studio inbox. Confirm the hello@1973.ai
-mailbox exists before relying on it.
+**Contact form**: submissions land in the Netlify dashboard (Forms → contact),
+with notifications configured there. The site deliberately shows no email
+address — the television is the only front door.
 
 ## The design rule that matters most
 
@@ -98,7 +98,7 @@ netlify.toml                   build, headers/CSP
 
 1. ~~Scaffold repo + deploy pipeline; port the mockup into components~~ ✅
 2. ~~Front-desk chat~~ ✅ self-contained Q&A (extend `front-desk.json` as questions come in)
-3. ~~Wire the CRT contact form~~ ✅ via Netlify Forms (confirm hello@1973.ai)
+3. ~~Wire the CRT contact form~~ ✅ via Netlify Forms (no email shown on-site)
 4. Replace darkroom placeholders with real photography
 5. Ship the badge embed from 1973.ai; add the badge to hear.is + santasecret
 6. Later: saygday.ai and Listing Lens sites / case-study pages as they mature
