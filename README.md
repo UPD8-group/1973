@@ -85,7 +85,7 @@ src/
     Header.jsx  Hero.jsx  FactsStrip.jsx
     Work.jsx  Waveform.jsx  SnowCanvas.jsx
     Assistant.jsx              front-desk chat (matching + typewriter only)
-    Darkroom.jsx               generated placeholder frames — swap for real photos
+    Darkroom.jsx               street series, Spain (src/assets/darkroom/)
     Studio.jsx                 about-the-studio section
     Badge.jsx                  "made in 1973" badge + embed snippet
     ContactTV.jsx              the Chroma 73 television (channels, knobs, form)
@@ -99,6 +99,8 @@ netlify.toml                   build, headers/CSP
 1. ~~Scaffold repo + deploy pipeline; port the mockup into components~~ ✅
 2. ~~Front-desk chat~~ ✅ self-contained Q&A (extend `front-desk.json` as questions come in)
 3. ~~Wire the CRT contact form~~ ✅ via Netlify Forms (no email shown on-site)
-4. Replace darkroom placeholders with real photography
+4. ~~Replace darkroom placeholders with real photography~~ ✅ street series, Spain
+   (to add frames: 4:5 crops ~800×1000 into `src/assets/darkroom/`, one entry in
+   `Darkroom.jsx`)
 5. Ship the badge embed from 1973.ai; add the badge to hear.is + santasecret
 6. Later: saygday.ai and Listing Lens sites / case-study pages as they mature
