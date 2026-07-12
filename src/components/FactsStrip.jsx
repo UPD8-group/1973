@@ -1,26 +1,42 @@
 const FACTS = [
-  { yr: "1973 · MAR", what: "Xerox Alto boots — the first computer with a graphical interface" },
-  { yr: "1973 · APR", what: "Motorola places the first handheld mobile phone call" },
-  { yr: "1973 · MAY", what: "Ethernet is sketched at Xerox PARC — the network begins" },
-  { yr: "1973 · MAR", what: "Pink Floyd releases The Dark Side of the Moon" },
-  { yr: "1973", what: "One more notable launch: the founder of this studio" },
-];
+  {
+    when: '1973·MAR',
+    what: 'Xerox Alto boots — the first computer with a graphical interface',
+  },
+  {
+    when: '1973·APR',
+    what: 'Motorola places the first handheld mobile phone call',
+  },
+  {
+    when: '1973·MAY',
+    what: 'Ethernet is sketched at Xerox PARC — the network begins',
+  },
+  {
+    when: '1973·MAR',
+    what: 'Pink Floyd releases The Dark Side of the Moon',
+  },
+  {
+    when: 'SOON AFTER',
+    what: 'The arcades fill with blinking lights — and games that test your memory',
+  },
+  {
+    when: 'TODAY',
+    what: 'The lights still blink. Your move.',
+    today: true,
+  },
+]
 
 export default function FactsStrip() {
   return (
-    <div className="strip" role="list" aria-label="What happened in 1973">
-      <div className="strip-inner">
+    <section className="facts" id="year" aria-label="The year 1973">
+      <div className="facts-track">
         {FACTS.map((f) => (
-          <div className="fact" role="listitem" key={f.yr + f.what}>
-            <span className="yr">{f.yr}</span>
-            <span className="what">{f.what}</span>
+          <div className={`facts-cell${f.today ? ' facts-cell-today' : ''}`} key={f.when + f.what}>
+            <span className="facts-when">{f.when}</span>
+            <span className="facts-what">{f.what}</span>
           </div>
         ))}
-        <div className="fact now" role="listitem">
-          <span className="yr">TODAY</span>
-          <span className="what">The tools changed. The impulse didn&rsquo;t.</span>
-        </div>
       </div>
-    </div>
-  );
+    </section>
+  )
 }

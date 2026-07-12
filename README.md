@@ -1,106 +1,65 @@
-# Studio 1973 — 1973.ai
+# 1973.ai — the memory console
 
-The studio site. A single-theme dark "darkroom" world: giant striped 1973 mark,
-self-demonstrating case-study cards, a scripted front-desk chat, a darkroom that
-develops prints on hover, and a 1973 wood-grain CRT television for a contact form.
+A one-page arcade of 1970s-style games, presented as a den of period
+"appliances" you scroll through and play. Warm, dark, wood-and-bakelite
+seventies world: square-wave bleeps, phosphor glow, and a television you
+tune to write to the studio.
 
-The spec lives in `upd8-group/hear.is` under `studio-1973/` — `BRIEF.md` is the
-brief, `concept-mockup.html` is the approved visual concept this build ports.
+Every game uses era **mechanics** only — all the expression (names,
+palette, tones, trade dress) is original to this site.
 
-## Stack
+## The machines
 
-Vite + React on Netlify. **Fully self-contained** — no APIs, no external
-requests, no keys to manage, nothing to hijack.
+| # | Machine | What it is |
+|---|---------|------------|
+| 01 | **The memory handset** | Repeat a growing tone-and-light sequence on four burnt-palette squares (ember · teal · olive · plum). One wrong square ends the run; best score is remembered. |
+| 02 | **Television tennis** | Rally against the machine on a wood-grain TV. Drag anywhere on the screen to move your paddle. First to seven. |
+| 03 | **Brickfield** | Knock down a six-row spectrum wall with three balls. Higher rows score more; each row has its own tone. |
+| 04 | **Trail** | A green-phosphor grid snake. Steer with arrow keys, WASD, or the on-screen d-pad. Walls — and your own trail — are fatal. |
+| 05 | **Cave hunt** | A teletype text hunt: twelve caves in a ring, one beast, two chasms, three arrows. Listen for warnings, shoot when you're sure. |
+| 06 | **Contact** | A 1973 television set. CH·01 static, CH·02 test card, CH·03 an amber-phosphor contact form that transmits to the studio. |
 
-- **Build**: `npm run build` → `dist/`
-- **Front-desk chat**: a curated Q&A file, `src/data/front-desk.json`, bundled
-  at build time. Keyword matching picks the best answer; anything unmatched gets
-  a friendly "one for the team" reply that links down to the contact television.
-  This is the reusable pattern for client sites (Santa's Secret next).
-- **Contact form**: Netlify Forms, posted from the CRT screen (channel 3).
-- **Fonts**: system stacks only (Iowan Old Style / Palatino / Georgia +
-  ui-monospace) — strict same-origin CSP.
+All games are fully touch-playable, only animate after you press start,
+respect `prefers-reduced-motion`, and share one master sound switch in
+the header (persisted, like the best scores, in `localStorage`).
 
-## Editing the front desk
+## Stack & structure
 
-Open `src/data/front-desk.json`. Each entry is:
-
-```json
-{
-  "id": "pricing",
-  "keys": ["price", "cost", "how much"],
-  "a": "The answer, in the studio voice.",
-  "cta": { "href": "#contact", "label": "Tune in on channel 3 ↓" }
-}
-```
-
-- Single-word `keys` match whole words; multi-word phrases match anywhere and
-  score double. The highest-scoring entry answers.
-- `cta` is optional — it renders as a link under the reply (use it whenever the
-  right next step is the contact form).
-- The `fallback` entry answers everything that doesn't match. Keep it warm; it
-  is the lead-capture path.
-
-House rules for answers: speak as "the studio"/"we", never mention team size or
-the tools behind the scenes, never quote prices — steer pricing to the form.
-
-## Development
+Vite + React (JavaScript), single page, no router.
 
 ```
-npm install
-npm run dev
-```
-
-## Deploy
-
-Push to `main`. Netlify builds and deploys to https://1973.ai. No environment
-variables required.
-
-**Contact form**: submissions land in the Netlify dashboard (Forms → contact),
-with notifications configured there. The site deliberately shows no email
-address — the television is the only front door.
-
-## The design rule that matters most
-
-Every case-study card demonstrates its own product:
-
-- **hear.is** — pointer-reactive waveform (`Waveform.jsx`)
-- **Listing Lens** — slow amber scan-beam (CSS, `.case.lens::after`)
-- **Santa's Secret** — real falling snow (`SnowCanvas.jsx`, IntersectionObserver-gated)
-
-Any future case study must ship with its own self-demonstrating interaction.
-All motion respects `prefers-reduced-motion`.
-
-## Layout
-
-```
-index.html                     Vite entry + hidden Netlify Forms detection form
+index.html                    entry — title, meta, inline SVG favicon
+netlify.toml                  build npm run build · publish dist · functions dir
+netlify/functions/contact.mjs the one serverless function (POST /api/contact)
 src/
-  main.jsx                     entry
-  App.jsx                      section order
-  styles.css                   the whole design system (ported from the concept)
-  lib/util.js                  seeded PRNG + reduced-motion hook
-  data/front-desk.json         the chat's entire brain — edit answers here
+  main.jsx                    React root
+  App.jsx                     page assembly, top to bottom
+  styles.css                  the whole design system (umber-dark, single theme)
+  lib/audio.js                one AudioContext: unlock(), tone(), sound switch
   components/
-    Header.jsx  Hero.jsx  FactsStrip.jsx
-    Work.jsx  Waveform.jsx  SnowCanvas.jsx
-    Assistant.jsx              front-desk chat (matching + typewriter only)
-    Darkroom.jsx               street series, Spain (src/assets/darkroom/)
-    Studio.jsx                 about-the-studio section
-    Badge.jsx                  "made in 1973" badge + embed snippet
-    ContactTV.jsx              the Chroma 73 television (channels, knobs, form)
-    Footer.jsx
-public/                        favicon, robots.txt
-netlify.toml                   build, headers/CSP
+    Header.jsx  Hero.jsx  FactsStrip.jsx  Section.jsx  Footer.jsx
+    MemoryHandset.jsx  TvTennis.jsx  Brickfield.jsx  Trail.jsx
+    CaveHunt.jsx  TvContact.jsx
 ```
 
-## Roadmap (from the brief)
+## Develop
 
-1. ~~Scaffold repo + deploy pipeline; port the mockup into components~~ ✅
-2. ~~Front-desk chat~~ ✅ self-contained Q&A (extend `front-desk.json` as questions come in)
-3. ~~Wire the CRT contact form~~ ✅ via Netlify Forms (no email shown on-site)
-4. ~~Replace darkroom placeholders with real photography~~ ✅ street series, Spain
-   (to add frames: 4:5 crops ~800×1000 into `src/assets/darkroom/`, one entry in
-   `Darkroom.jsx`)
-5. Ship the badge embed from 1973.ai; add the badge to hear.is + santasecret
-6. Later: saygday.ai and Listing Lens sites / case-study pages as they mature
+```sh
+npm install
+npm run dev       # local dev server
+npm run build     # production build → dist/
+npm run preview   # serve the production build
+```
+
+## Contact form delivery (optional)
+
+`netlify/functions/contact.mjs` validates every submission (405 on
+non-POST, 400 on bad input, length caps). Delivery is optional:
+
+| Variable | Purpose |
+|----------|---------|
+| `RESEND_API_KEY` | Resend API key. **Unset:** submissions are logged and the form still succeeds (`{ ok: true, delivered: false }`). |
+| `CONTACT_TO` | Destination inbox. Defaults to `hello@1973.ai`. |
+| `CONTACT_FROM` | Verified Resend sender, e.g. `1973.ai <hello@1973.ai>`. |
+
+See `.env.example`.

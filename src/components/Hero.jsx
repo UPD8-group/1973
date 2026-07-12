@@ -1,22 +1,30 @@
 export default function Hero() {
   return (
-    <div className="hero wrap">
-      <span className="eyebrow">Studio 1973 · near Canberra, Australia</span>
-      <h1 className="mark">1973</h1>
-      <p className="mark-sub">
-        Born the same year as the personal computer.{" "}
-        <span className="dim">Still making things by hand.</span>
+    <section className="hero" id="top">
+      <p className="eyebrow hero-rise" style={{ '--rise': 0 }}>
+        1973.AI · THE ARCADE
       </p>
-      <p className="lede">
-        In 1973 Xerox switched on the Alto, Ethernet carried its first packet, and Motorola made
-        the first handheld phone call. <strong>Studio 1973</strong> is an independent studio from
-        the same vintage — building interactive websites, AI assistants, and full platforms,
-        with a camera never far away.
+      <h1 className="hero-title hero-rise" style={{ '--rise': 1 }}>
+        1973
+      </h1>
+      <p className="hero-subhead hero-rise" style={{ '--rise': 2 }}>
+        The games of the seventies.{' '}
+        <span className="hero-subhead-faint">One long scroll.</span>
       </p>
-      <div className="cta-row">
-        <a className="btn solid" href="#work">See the work</a>
-        <a className="btn" href="#assistant">Ask the studio</a>
+      <p className="hero-lede hero-rise" style={{ '--rise': 3 }}>
+        Memory squares, television tennis, brick walls, phosphor trails, and a
+        text-mode hunt in the dark — the great games of the 1970s, rebuilt for
+        the browser in period style, square-wave bleeps and all. Scroll down,
+        pick a machine, and play. More cabinets arrive as they&rsquo;re built.
+      </p>
+      <div className="hero-ctas hero-rise" style={{ '--rise': 4 }}>
+        <a className="btn btn-solid" href="#play">
+          ▶ Start playing
+        </a>
+        <a className="btn btn-outline" href="#year">
+          Why 1973?
+        </a>
       </div>
-    </div>
-  );
+    </section>
+  )
 }
