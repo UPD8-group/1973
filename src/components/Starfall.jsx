@@ -142,6 +142,15 @@ export default function Starfall() {
     setMessage(text)
   }
 
+  function stop() {
+    gen.current++
+    game.current = null
+    setRunning(false)
+    setScore(0)
+    setMessage('one bolt in the air — drag to aim, tap or space to fire')
+    drawFrame(freshGame())
+  }
+
   function fire() {
     const st = game.current
     if (!st || st.bolt) return
@@ -372,6 +381,9 @@ export default function Starfall() {
       <div className="machine-controls">
         <button type="button" className="btn btn-solid" onClick={start}>
           {running ? 'Restart' : '▶ Start'}
+        </button>
+        <button type="button" className="btn btn-outline" onClick={stop} disabled={!running}>
+          ■ Stop
         </button>
       </div>
     </Section>

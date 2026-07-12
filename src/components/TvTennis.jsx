@@ -64,6 +64,15 @@ export default function TvTennis() {
     })
   }
 
+  function stop() {
+    gen.current++
+    game.current = null
+    setRunning(false)
+    setScore({ machine: 0, you: 0 })
+    setMessage('first to seven — drag on the screen to move')
+    drawFrame(freshGame())
+  }
+
   function endMatch(st) {
     gen.current++
     setRunning(false)
@@ -225,6 +234,9 @@ export default function TvTennis() {
       <div className="machine-controls">
         <button type="button" className="btn btn-solid" onClick={start}>
           {running ? 'Restart' : '▶ Start'}
+        </button>
+        <button type="button" className="btn btn-outline" onClick={stop} disabled={!running}>
+          ■ Stop
         </button>
       </div>
     </Section>

@@ -78,6 +78,14 @@ export default function MemoryHandset() {
     playRound(g)
   }
 
+  function stop() {
+    gen.current++
+    seq.current = []
+    setLit(-1)
+    setRound(0)
+    setPhase('idle')
+  }
+
   async function press(i) {
     if (phase !== 'turn') return
     unlock()
@@ -144,9 +152,19 @@ export default function MemoryHandset() {
               />
             ))}
           </div>
-          <button type="button" className="btn btn-solid handset-start" onClick={start}>
-            {phase === 'idle' ? '▶ Start' : phase === 'over' ? '▶ Restart' : 'Restart'}
-          </button>
+          <div className="handset-buttons">
+            <button type="button" className="btn btn-solid" onClick={start}>
+              {phase === 'idle' ? '▶ Start' : phase === 'over' ? '▶ Restart' : 'Restart'}
+            </button>
+            <button
+              type="button"
+              className="btn btn-outline"
+              onClick={stop}
+              disabled={phase === 'idle' || phase === 'over'}
+            >
+              ■ Stop
+            </button>
+          </div>
           <p className="handset-etch">memory handset · model mcmlxxiii</p>
         </div>
       </div>

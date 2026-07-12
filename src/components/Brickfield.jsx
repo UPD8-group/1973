@@ -80,6 +80,15 @@ export default function Brickfield() {
     setMessage(text)
   }
 
+  function stop() {
+    gen.current++
+    game.current = null
+    setRunning(false)
+    setScore(0)
+    setMessage('three balls — higher rows score more')
+    drawFrame(freshGame())
+  }
+
   function step(st, now) {
     st.paddleX = Math.max(PADDLE_W / 2 + 4, Math.min(W - PADDLE_W / 2 - 4, st.targetX))
 
@@ -249,6 +258,9 @@ export default function Brickfield() {
       <div className="machine-controls">
         <button type="button" className="btn btn-solid" onClick={start}>
           {running ? 'Restart' : '▶ Start'}
+        </button>
+        <button type="button" className="btn btn-outline" onClick={stop} disabled={!running}>
+          ■ Stop
         </button>
       </div>
     </Section>
