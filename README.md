@@ -16,7 +16,7 @@ palette, tones, trade dress) is original to this site.
 | 02 | **Television tennis** | Rally against the machine on a wood-grain TV. Drag anywhere on the screen to move your paddle. First to seven. |
 | 03 | **Brickfield** | Knock down a six-row spectrum wall with three balls. Higher rows score more; each row has its own tone. |
 | 04 | **Trail** | A green-phosphor grid snake. Steer with arrow keys, WASD, or the on-screen d-pad. Walls — and your own trail — are fatal. |
-| 05 | **Cave hunt** | A teletype text hunt: twelve caves in a ring, one beast, two chasms, three arrows. Listen for warnings, shoot when you're sure. |
+| 05 | **Starfall** | A fixed-shooter last stand: a fleet of twinkling star-glyphs marches down the night sky. One bolt in the air at a time — drag to aim, tap or space to fire. |
 | 06 | **Contact** | A 1973 television set. CH·01 static, CH·02 test card, CH·03 an amber-phosphor contact form that transmits to the studio. |
 
 All games are fully touch-playable, only animate after you press start,
@@ -39,7 +39,7 @@ src/
   components/
     Header.jsx  Hero.jsx  FactsStrip.jsx  Section.jsx  Footer.jsx
     MemoryHandset.jsx  TvTennis.jsx  Brickfield.jsx  Trail.jsx
-    CaveHunt.jsx  TvContact.jsx
+    Starfall.jsx  TvContact.jsx
 ```
 
 ## Develop

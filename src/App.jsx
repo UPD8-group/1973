@@ -5,7 +5,7 @@ import MemoryHandset from './components/MemoryHandset.jsx'
 import TvTennis from './components/TvTennis.jsx'
 import Brickfield from './components/Brickfield.jsx'
 import Trail from './components/Trail.jsx'
-import CaveHunt from './components/CaveHunt.jsx'
+import Starfall from './components/Starfall.jsx'
 import TvContact from './components/TvContact.jsx'
 import Footer from './components/Footer.jsx'
 
@@ -20,7 +20,7 @@ export default function App() {
         <TvTennis />
         <Brickfield />
         <Trail />
-        <CaveHunt />
+        <Starfall />
         <TvContact />
       </main>
       <Footer />
