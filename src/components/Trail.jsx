@@ -117,6 +117,15 @@ export default function Trail() {
     setTimeout(tick, START_TICK)
   }
 
+  function stop() {
+    gen.current++
+    game.current = null
+    setRunning(false)
+    setDead(false)
+    setScore(0)
+    drawFrame(freshGame())
+  }
+
   function die(st) {
     gen.current++
     tone(70, 0.5, 'sawtooth', 0.14)
@@ -236,6 +245,14 @@ export default function Trail() {
       <p className="machine-note" role="status">
         {note}
       </p>
+      <div className="machine-controls">
+        <button type="button" className="btn btn-solid" onClick={start}>
+          {running ? 'Restart' : '▶ Start'}
+        </button>
+        <button type="button" className="btn btn-outline" onClick={stop} disabled={!running}>
+          ■ Stop
+        </button>
+      </div>
     </Section>
   )
 }
