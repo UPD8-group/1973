@@ -4,7 +4,7 @@ export default function EightiesHero() {
   return (
     <section className="hero neon-hero" id="top">
       <p className="eyebrow hero-rise" style={{ '--rise': 0 }}>
-        1983.AI · THE NEON FLOOR
+        THE NEON FLOOR
       </p>
       <h1 className="hero-title neon-title hero-rise" style={{ '--rise': 1 }} data-text="1983">
         1983
