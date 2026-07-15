@@ -1,11 +1,19 @@
 import { useEffect, useState } from 'react'
 
-// The 80s room lives at #/eighties. Everything else (empty, #/, or a 70s
-// in-page anchor like #play) is the 70s arcade. Section jumps inside the
-// 80s page use programmatic scrolling so they never disturb the route.
+// Routes: #/eighties → the neon floor, #/why → the 1973 story, everything
+// else (empty, #/, or a 70s anchor like #play) → the 70s arcade. Section
+// jumps inside a page use programmatic scrolling so they don't disturb the
+// route.
 
-export function decadeFromHash(hash) {
-  return hash.startsWith('#/eighties') ? 'eighties' : 'seventies'
+export function routeFromHash(hash) {
+  if (hash.startsWith('#/eighties')) return 'eighties'
+  if (hash.startsWith('#/why')) return 'why'
+  return 'seventies'
+}
+
+// The theme follows the room: the 1973 story wears the umber '73 theme.
+export function themeFromRoute(route) {
+  return route === 'eighties' ? 'eighties' : 'seventies'
 }
 
 export function useHashRoute() {

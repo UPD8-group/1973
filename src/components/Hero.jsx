@@ -21,7 +21,7 @@ export default function Hero() {
         <a className="btn btn-solid" href="#play">
           ▶ Start playing
         </a>
-        <a className="btn btn-outline" href="#year">
+        <a className="btn btn-outline" href="#/why">
           Why 1973?
         </a>
       </div>
