@@ -1282,3 +1282,10 @@ button {
     opacity: 0;
   }
 }
+
+
+/* Studio return link and accessible arcade entry. */
+.arcade-skip{position:fixed;left:16px;top:-100px;z-index:100;background:var(--amber);color:var(--ground);padding:10px 16px}
+.arcade-skip:focus{top:12px}
+#arcade-main{scroll-margin-top:140px}
+@media(max-width:600px){.site-header-inner{flex-wrap:wrap;gap:10px;padding:12px 16px}.site-nav{width:100%;justify-content:space-between;gap:8px}.site-nav a{font-size:10px}.sound-pill{font-size:10px;padding:7px 10px}}

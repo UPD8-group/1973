@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="site-footer">
-      <p className="fine-print">1973.ai · hello@1973.ai</p>
+      <p className="fine-print"><a href="/">← 1973.ai game studio</a> · <a href="mailto:hello@1973.ai">hello@1973.ai</a></p>
       <a href="https://oo.studio" target="_blank" rel="noopener" className="oo-credit">
         <span>website by</span>
         <svg width="36" height="24" viewBox="0 0 36 24" aria-hidden="true">
@@ -21,3 +21,4 @@ export default function Footer() {
     </footer>
   )
 }
+

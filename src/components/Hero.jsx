@@ -2,7 +2,7 @@ export default function Hero() {
   return (
     <section className="hero" id="top">
       <p className="eyebrow hero-rise" style={{ '--rise': 0 }}>
-        1973.AI · THE ARCADE
+        THE 1973 ARCADE · THE WARM FLOOR
       </p>
       <h1 className="hero-title hero-rise" style={{ '--rise': 1 }}>
         1973
@@ -28,3 +28,4 @@ export default function Hero() {
     </section>
   )
 }
+
