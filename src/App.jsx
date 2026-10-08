@@ -1,33 +1,14 @@
-import { useEffect } from 'react'
-import Header from './components/Header.jsx'
-import Footer from './components/Footer.jsx'
-import Seventies from './pages/Seventies.jsx'
-import Eighties from './pages/Eighties.jsx'
-import { useHashRoute, decadeFromHash } from './lib/route.js'
+import { lazy, Suspense, useEffect } from 'react'
+import Studio from './pages/Studio.jsx'
+import { isArcadePath, legacyArcadeURL } from './lib/studio-route.mjs'
+const Arcade = lazy(() => import('./pages/Arcade.jsx'))
 
 export default function App() {
-  const hash = useHashRoute()
-  const decade = decadeFromHash(hash)
-
-  // On route/anchor change, honour cross-page anchors (e.g. the 80s room
-  // linking to #contact on the 70s page); otherwise start at the top.
-  useEffect(() => {
-    const id = hash.replace(/^#\/?/, '')
-    if (id && id !== 'eighties') {
-      const el = document.getElementById(id)
-      if (el) {
-        el.scrollIntoView()
-        return
-      }
-    }
-    window.scrollTo(0, 0)
-  }, [hash, decade])
-
-  return (
-    <div className="app" data-decade={decade}>
-      <Header decade={decade} />
-      <main>{decade === 'eighties' ? <Eighties /> : <Seventies />}</main>
-      <Footer />
-    </div>
-  )
+  const { pathname, hash, search } = window.location
+  const legacyURL = legacyArcadeURL(pathname, hash, search)
+  useEffect(() => { if (legacyURL) window.location.replace(legacyURL) }, [legacyURL])
+  if (legacyURL) return <p className="studio-loading">Opening the arcade…</p>
+  return isArcadePath(pathname)
+    ? <Suspense fallback={<p className="studio-loading">Warming up the arcade…</p>}><Arcade /></Suspense>
+    : <Studio />
 }

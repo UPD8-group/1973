@@ -1,9 +1,15 @@
-# 1973.ai — the memory console
+# 1973.ai — the game studio
 
-An arcade of period games, presented as two rooms you walk between: the
+The studio homepage lives at `/` and introduces Fliptide, Games in Time, and the browser arcade. It uses a locally hosted original hero image, responsive navigation, and separate studio styles.
+
+The full original arcade lives at `/arcade/`, presented as two rooms you walk between: the
 warm, wood-and-bakelite **1973** floor and the black-and-neon **1983**
 floor. A decade switcher in the header moves between them; the site is a
-single page with a tiny hash router (`#/` and `#/eighties`).
+single page with a tiny hash router (`/arcade/#/` and `/arcade/#/eighties`). Old root bookmarks such as `/#play` and `/#/eighties` are forwarded to their matching arcade location. Scores and sound preferences retain the same localStorage keys.
+
+The studio does not load the game component bundle until someone enters the arcade. Netlify rewrites `/arcade` to the app entry, so direct visits and reloads work. Game mechanics and the existing contact endpoint are unchanged.
+
+Hero image: generated with the built-in image tool for this project. Brief: a cinematic photograph of a sunlit 1970s Australian games room with a walnut CRT, simple pixel tennis, wired controllers, warm cream and amber, no branding. Production files: `public/studio/play-room.webp` and `play-room-small.webp`. The Fliptide and Games in Time images are screenshots of the studio’s games.
 
 Every game uses era **mechanics** only — all the expression (names,
 palette, tones, trade dress) is original to this site.
@@ -89,3 +95,4 @@ non-POST, 400 on bad input, length caps). Delivery is optional:
 | `CONTACT_FROM` | Verified Resend sender, e.g. `1973.ai <hello@1973.ai>`. |
 
 See `.env.example`.
+

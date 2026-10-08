@@ -24,8 +24,8 @@ export default function Header({ decade }) {
       <div className="site-header-inner">
         <a
           className="wordmark"
-          href={decade === 'eighties' ? '#/eighties' : '#top'}
-          aria-label="1973.ai — back to top"
+          href="/"
+          aria-label="1973.ai — game studio home"
         >
           <span className="wordmark-year">1973</span>
           <span className="wordmark-ai">.ai</span>
@@ -40,7 +40,8 @@ export default function Header({ decade }) {
           </a>
         </div>
 
-        <nav className="site-nav" aria-label="Site">
+        <nav className="site-nav" aria-label="Arcade navigation">
+          <a href="/">studio ↗</a>
           {decade === 'eighties' ? (
             <>
               <a href="#e-play" onClick={(e) => jump(e, 'e-play')}>
@@ -69,3 +70,4 @@ export default function Header({ decade }) {
     </header>
   )
 }
+
